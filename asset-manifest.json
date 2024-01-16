@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/CodeForcesContestVisualizer/static/css/main.7fc12fdf.css",
+    "main.js": "/CodeForcesContestVisualizer/static/js/main.eb39afc0.js",
+    "static/js/787.1c212d0e.chunk.js": "/CodeForcesContestVisualizer/static/js/787.1c212d0e.chunk.js",
+    "static/media/logoCF.png": "/CodeForcesContestVisualizer/static/media/logoCF.8e7531cca66a2af63276.png",
+    "index.html": "/CodeForcesContestVisualizer/index.html",
+    "main.7fc12fdf.css.map": "/CodeForcesContestVisualizer/static/css/main.7fc12fdf.css.map",
+    "main.eb39afc0.js.map": "/CodeForcesContestVisualizer/static/js/main.eb39afc0.js.map",
+    "787.1c212d0e.chunk.js.map": "/CodeForcesContestVisualizer/static/js/787.1c212d0e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7fc12fdf.css",
+    "static/js/main.eb39afc0.js"
+  ]
+}
