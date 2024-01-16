@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import logo from "./logoCF.png";
+import { Link } from "react-router-dom";
+import styles from "./ApiCall.module.css";
+
 export default function ApiCall() {
   console.log("call");
   const [firstName, setFirstName] = useState("");
@@ -9,25 +12,26 @@ export default function ApiCall() {
   const [user, setUser] = useState("");
   const [contest, setContest] = useState([]);
   let counter = 0;
+  const [buttonStyle, setButtonStyle] = useState({
+    padding: "10px 20px",
+    fontSize: "16px",
+    backgroundColor: "#4CAF50",
+    color: "white",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+  });
+
+  const buttonHoverStyle = {
+    backgroundColor: "#45a049",
+  };
   async function calling() {
     counter = 0;
     if (user === "") {
       alert("Please Enter User Handel");
       return;
     }
-    // const response = await fetch(
-    //   " https://codeforces.com/api/user.rating?handle=" + user
-    // )
-    //   .then((res) => {
-    //     if (res.status == 400) {
-    //       alert("Please Enter Valid User Handel");
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     console.log(data);
-    //     setContest(data.result.sort((a, b) => a.rank - b.rank));
-    //   });
     const response = await fetch(
       " https://codeforces.com/api/user.rating?handle=" + user
     );
@@ -52,72 +56,104 @@ export default function ApiCall() {
       setValid(true);
     }
   }
+
   return (
     <>
-      <p className="heading">
-        <img src={logo} />
-        <h1>CodeForces Contest Visulaizer</h1>
-      </p>
-      <p>
-        <span
+      <div style={{ marginBottom: "20px" }}>
+        <label
           style={{
-            marginRight: "10px",
+            display: "block",
+            marginBottom: "8px",
             fontWeight: "bold",
+            fontSize: "20px",
           }}
         >
-          UserHandel
-        </span>
-        <input
-          type="text"
-          onChange={(ev) => setUser(ev.target.value)}
-          required
-        ></input>
-      </p>
-      <button type="submit" onClick={calling}>
+          UserHandle
+          <input
+            type="text"
+            onChange={(ev) => setUser(ev.target.value)}
+            required
+            style={{
+              padding: "8px",
+              width: "10%",
+              boxSizing: "border-box",
+              border: "1px solid #ddd",
+              borderRadius: "4px",
+              fontSize: "16px",
+              marginLeft: "10px",
+            }}
+          />
+        </label>
+      </div>
+
+      <button
+        style={buttonStyle}
+        onMouseOver={() => {
+          // Apply hover styles on mouse over
+          setButtonStyle((prevStyle) => ({
+            ...prevStyle,
+            ...buttonHoverStyle,
+          }));
+        }}
+        onMouseOut={() => {
+          // Reset styles on mouse out
+          setButtonStyle((prevStyle) => ({
+            ...prevStyle,
+            backgroundColor: "#4CAF50",
+          }));
+        }}
+        type="submit"
+        onClick={calling}
+      >
         Show Results
       </button>
-      <div
-        className="rating"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        <p style={{ textAlign: "center", margin: "5px", marginBottom: "20px" }}>
+      {/* ... your existing code ... */}
+      <div className={styles.rating}>
+        <p>
           <span style={{ fontWeight: "bold" }}>Current Rating: </span>
           {rating}
         </p>
-        <p style={{ textAlign: "center", margin: "5px", marginBottom: "20px" }}>
+        <p>
           <span style={{ fontWeight: "bold" }}>Max Rating: </span>
           {maxRating}
         </p>
       </div>
+      {/* ... your existing code ... */}
       <table>
         <thead>
-          <td style={{ fontWeight: "bold" }}>No.</td>
-          <td style={{ fontWeight: "bold" }}>Contest</td>
-          <td style={{ fontWeight: "bold" }}>Rank</td>
-          <td style={{ fontWeight: "bold" }}>Date</td>
+          <tr>
+            <td>No.</td>
+            <td>Contest</td>
+            <td>Rank</td>
+            <td>Date</td>
+          </tr>
         </thead>
-        {contest.map((item) => {
-          let date = item.ratingUpdateTimeSeconds;
-          date = new Intl.DateTimeFormat("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-          }).format(date * 1000);
-          return (
-            <tr>
-              <td>{++counter}</td>
-              <a
-                href={`https://codeforces.com/contest/${item.contestId}`}
-                style={{ textDecoration: "none", color: "black" }}
-                target="_blank"
-              >
-                <td>{item.contestName}</td>
-              </a>
-              <td>{item.rank}</td>
-              <td>{date}</td>
-            </tr>
-          );
-        })}
+        <tbody>
+          {contest.map((item) => {
+            let date = item.ratingUpdateTimeSeconds;
+            date = new Intl.DateTimeFormat("en-US", {
+              year: "numeric",
+              month: "2-digit",
+              day: "2-digit",
+            }).format(date * 1000);
+            return (
+              <tr key={item.contestId}>
+                <td>{++counter}</td>
+                <td>
+                  <a
+                    href={`https://codeforces.com/contest/${item.contestId}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                    target="_blank"
+                  >
+                    {item.contestName}
+                  </a>
+                </td>
+                <td>{item.rank}</td>
+                <td>{date}</td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </>
   );

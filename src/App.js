@@ -1,11 +1,15 @@
-import logo from "./logo.svg";
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import ProblemSolved from "./ProblemSolved";
 import ApiCall from "./api";
+import DistinctProblems from "./DistinctProblems";
+
 function App() {
   return (
-    <>
-      <ApiCall />
-    </>
+    <Routes>
+      <Route path="/" element={<ApiCall />} />
+      <Route path="/problemSolved" element={<ProblemSolved />} />
+      <Route path="/distinctProblems" element={<DistinctProblems />} />
+    </Routes>
   );
 }
 
