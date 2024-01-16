@@ -13,11 +13,3 @@ Welcome to the CodeForces Contest Visualizer! This web application provides you 
 3. **Friend's Solved Problems:**
    - Track problems solved by your friend on CodeForces and identify unsolved challenges for personal improvement.
 
-## Getting Started
-
-To use the CodeForces Contest Visualizer, follow these steps:
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/codeforces-visualizer.git
-   cd codeforces-visualizer
