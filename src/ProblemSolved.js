@@ -13,7 +13,7 @@ const ProblemSolved = () => {
   const [entriesPerPage, setEntriesPerPage] = useState(5);
   const [buttonStyle, setButtonStyle] = useState({
     padding: "10px 20px",
-    fontSize: "16px",
+    fontSize: "1.2vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -84,6 +84,7 @@ const ProblemSolved = () => {
     indexOfFirstEntry,
     indexOfLastEntry
   );
+  const [loading, setLoading] = useState(false);
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(solvedProblems.length / entriesPerPage); i++) {
@@ -103,44 +104,56 @@ const ProblemSolved = () => {
           User Handle
           <input
             type="text"
+            name="user"
             onChange={(ev) => setUser(ev.target.value)}
             required
             style={{
               padding: "8px",
-              width: "10%",
+              width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
               borderRadius: "4px",
-              fontSize: "16px",
+              fontSize: "1.2vw",
               marginLeft: "10px",
             }}
           />
         </label>
       </div>
-      <button
-        style={buttonStyle}
-        onMouseOver={() => {
-          // Apply hover styles on mouse over
-          setButtonStyle((prevStyle) => ({
-            ...prevStyle,
-            ...buttonHoverStyle,
-          }));
-        }}
-        onMouseOut={() => {
-          // Reset styles on mouse out
-          setButtonStyle((prevStyle) => ({
-            ...prevStyle,
-            backgroundColor: "#4CAF50",
-          }));
-        }}
-        type="submit"
-        onClick={fetchSolvedProblems}
-      >
-        Show Results
-      </button>
-
+      <div style={{ display: "flex" }}>
+        <button
+          style={buttonStyle}
+          onMouseOver={() => {
+            // Apply hover styles on mouse over
+            setButtonStyle((prevStyle) => ({
+              ...prevStyle,
+              ...buttonHoverStyle,
+            }));
+          }}
+          onMouseOut={() => {
+            // Reset styles on mouse out
+            setButtonStyle((prevStyle) => ({
+              ...prevStyle,
+              backgroundColor: "#4CAF50",
+            }));
+          }}
+          type="submit"
+          onClick={fetchSolvedProblems}
+        >
+          Show Results
+        </button>
+        {loading ? (
+          <p
+            style={{
+              marginLeft: "20px",
+              fontSize: "1.1vw",
+            }}
+          >
+            Loading ...
+          </p>
+        ) : null}
+      </div>
       <div>
-        <h2>Solved Problems:{counter} </h2>
+        <h2 style={{ fontSize: "1.5vw" }}>Solved Problems:{counter} </h2>
         <table className={styles.table}>
           <thead>
             <tr>

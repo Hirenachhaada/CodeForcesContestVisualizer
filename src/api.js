@@ -11,10 +11,11 @@ export default function ApiCall() {
   const [valid, setValid] = useState(false);
   const [user, setUser] = useState("");
   const [contest, setContest] = useState([]);
+  const [loading, setLoading] = useState(false);
   let counter = 0;
   const [buttonStyle, setButtonStyle] = useState({
     padding: "10px 20px",
-    fontSize: "16px",
+    fontSize: "1.2vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -65,17 +66,18 @@ export default function ApiCall() {
             display: "block",
             marginBottom: "8px",
             fontWeight: "bold",
-            fontSize: "20px",
+            fontSize: "1.2rem",
           }}
         >
-          UserHandle
+          User Handle
           <input
             type="text"
+            name="user"
             onChange={(ev) => setUser(ev.target.value)}
             required
             style={{
               padding: "8px",
-              width: "10%",
+              width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
               borderRadius: "4px",
@@ -85,28 +87,39 @@ export default function ApiCall() {
           />
         </label>
       </div>
-
-      <button
-        style={buttonStyle}
-        onMouseOver={() => {
-          // Apply hover styles on mouse over
-          setButtonStyle((prevStyle) => ({
-            ...prevStyle,
-            ...buttonHoverStyle,
-          }));
-        }}
-        onMouseOut={() => {
-          // Reset styles on mouse out
-          setButtonStyle((prevStyle) => ({
-            ...prevStyle,
-            backgroundColor: "#4CAF50",
-          }));
-        }}
-        type="submit"
-        onClick={calling}
-      >
-        Show Results
-      </button>
+      <div style={{ display: "flex" }}>
+        <button
+          style={buttonStyle}
+          onMouseOver={() => {
+            // Apply hover styles on mouse over
+            setButtonStyle((prevStyle) => ({
+              ...prevStyle,
+              ...buttonHoverStyle,
+            }));
+          }}
+          onMouseOut={() => {
+            // Reset styles on mouse out
+            setButtonStyle((prevStyle) => ({
+              ...prevStyle,
+              backgroundColor: "#4CAF50",
+            }));
+          }}
+          type="submit"
+          onClick={calling}
+        >
+          Show Results
+        </button>
+        {loading ? (
+          <p
+            style={{
+              marginLeft: "20px",
+              fontSize: "1.1vw",
+            }}
+          >
+            Loading ...
+          </p>
+        ) : null}
+      </div>
       {/* ... your existing code ... */}
       <div className={styles.rating}>
         <p>

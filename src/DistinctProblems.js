@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
+import Loading from "./Loading";
 
 const DistinctProblems = () => {
   const [user, setUser] = useState("");
@@ -13,6 +14,8 @@ const DistinctProblems = () => {
   const [counter, setCounter] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [entriesPerPage, setEntriesPerPage] = useState(5);
+  const [loading, setLoading] = useState(false);
+
   const fetchDistinctProblems = async () => {
     if (user.trim() === "") {
       alert("Please enter a valid User Handle");
@@ -23,9 +26,10 @@ const DistinctProblems = () => {
       return;
     }
     if (altUser.trim() === "") {
-      altUser = user;
+      setAltUser(user);
     }
     try {
+      setLoading(true);
       const response = await fetch(
         `https://codeforces.com/api/user.status?handle=${user}`
       );
@@ -103,6 +107,7 @@ const DistinctProblems = () => {
         });
         setCounter(uniqueFriendProblems.length);
         setDistinctProblems(uniqueFriendProblems);
+        setLoading(false);
       } else {
         throw new Error("Failed to get user status");
       }
@@ -110,7 +115,6 @@ const DistinctProblems = () => {
       console.error("Error fetching data:", error.message);
     }
   };
-
   const sortTable = (option) => {
     const sortedProblems = [...distinctProblems];
 
@@ -129,7 +133,7 @@ const DistinctProblems = () => {
   };
   const [buttonStyle, setButtonStyle] = useState({
     padding: "10px 20px",
-    fontSize: "16px",
+    fontSize: "1.2vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -155,11 +159,12 @@ const DistinctProblems = () => {
           User Handle
           <input
             type="text"
+            name="user"
             onChange={(ev) => setUser(ev.target.value)}
             required
             style={{
               padding: "8px",
-              width: "10%",
+              width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
               borderRadius: "4px",
@@ -182,11 +187,12 @@ const DistinctProblems = () => {
           User Handle II (Alt Handle)😅😅
           <input
             type="text"
+            name="user"
             onChange={(ev) => setAltUser(ev.target.value)}
             required
             style={{
               padding: "8px",
-              width: "10%",
+              width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
               borderRadius: "4px",
@@ -211,9 +217,10 @@ const DistinctProblems = () => {
             type="text"
             onChange={(ev) => setFriend(ev.target.value)}
             required
+            name="user"
             style={{
               padding: "8px",
-              width: "10%",
+              width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
               borderRadius: "4px",
@@ -223,30 +230,42 @@ const DistinctProblems = () => {
           />
         </label>
       </div>
-      <button
-        style={buttonStyle}
-        onMouseOver={() => {
-          // Apply hover styles on mouse over
-          setButtonStyle((prevStyle) => ({
-            ...prevStyle,
-            ...buttonHoverStyle,
-          }));
-        }}
-        onMouseOut={() => {
-          // Reset styles on mouse out
-          setButtonStyle((prevStyle) => ({
-            ...prevStyle,
-            backgroundColor: "#4CAF50",
-          }));
-        }}
-        type="submit"
-        onClick={fetchDistinctProblems}
-      >
-        Show Results
-      </button>
-
+      <div style={{ display: "flex" }}>
+        <button
+          style={buttonStyle}
+          onMouseOver={() => {
+            // Apply hover styles on mouse over
+            setButtonStyle((prevStyle) => ({
+              ...prevStyle,
+              ...buttonHoverStyle,
+            }));
+          }}
+          onMouseOut={() => {
+            // Reset styles on mouse out
+            setButtonStyle((prevStyle) => ({
+              ...prevStyle,
+              backgroundColor: "#4CAF50",
+            }));
+          }}
+          type="submit"
+          onClick={fetchDistinctProblems}
+        >
+          Show Results
+        </button>
+        {loading ? (
+          <p
+            style={{
+              marginLeft: "20px",
+              fontSize: "1.1vw",
+            }}
+          >
+            Loading ...
+          </p>
+        ) : null}
+      </div>
       <div>
         <h2>Solved Problems:{counter} </h2>
+
         <table className={styles.table}>
           <thead>
             <tr>

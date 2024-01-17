@@ -8,11 +8,11 @@ const Nav = () => {
   return (
     <div>
       <p className={styles.heading}>
-        <img src={logo} width={"8%"} alt="CodeForces Logo" />
-        <h1>ProCoder's Insight</h1>
+        <img src={logo} width={"10%"} alt="CodeForces Logo" />
+        <h1 style={{ fontSize: "2.5vw" }}>ProCoder's Insight</h1>
       </p>
       <nav>
-        <ul className={styles.navbar}>
+        <ul className={styles.navbar} style={{ fontSize: "1.4vw" }}>
           <li>
             <Link to="/">Contest Ranks Hub</Link>
           </li>
@@ -23,6 +23,9 @@ const Nav = () => {
           </li>
           <li>
             <Link to="/problemSolved">CodeCrafted: Your Problem Victories</Link>
+          </li>
+          <li>
+            <Link to="/help">Help</Link>
           </li>
         </ul>
       </nav>
