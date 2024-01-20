@@ -13,7 +13,7 @@ const ProblemSolved = () => {
   const [entriesPerPage, setEntriesPerPage] = useState(5);
   const [buttonStyle, setButtonStyle] = useState({
     padding: "1vw 1.5vw",
-    fontSize: "1vw",
+    fontSize: "1.25vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -98,7 +98,7 @@ const ProblemSolved = () => {
             display: "block",
             marginBottom: "8px",
             fontWeight: "bold",
-            fontSize: "20px",
+            fontSize: "1.5vw",
           }}
         >
           User Handle

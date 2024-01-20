@@ -15,7 +15,7 @@ export default function ApiCall() {
   let counter = 0;
   const [buttonStyle, setButtonStyle] = useState({
     padding: "1vw 1.5vw",
-    fontSize: "1vw",
+    fontSize: "1.25vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -66,7 +66,7 @@ export default function ApiCall() {
             display: "block",
             marginBottom: "8px",
             fontWeight: "bold",
-            fontSize: "2vw",
+            fontSize: "1.5vw",
           }}
         >
           User Handle
