@@ -131,6 +131,7 @@ const ProblemSolved = () => {
           colorScheme="whatsapp"
           type="submit"
           onClick={fetchSolvedProblems}
+          fontSize={{ base: "sm", md: "md", lg: "lg" }}
         >
           {loading ? (
             <Spinner alignSelf="center" margin="auto" size="xl" w={20} h={20} />

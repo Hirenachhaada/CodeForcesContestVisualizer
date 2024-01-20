@@ -185,6 +185,7 @@ const DistinctProblems = () => {
           size="md"
           colorScheme="whatsapp"
           type="submit"
+          fontSize={{ base: "sm", md: "md", lg: "lg" }}
           onClick={fetchDistinctProblems}
         >
           {loading ? (
