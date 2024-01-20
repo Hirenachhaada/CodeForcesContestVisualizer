@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
-import { Spinner, Button } from "@chakra-ui/react";
+import { Spinner, Button, Heading } from "@chakra-ui/react";
 
 const ProblemSolved = () => {
   const [user, setUser] = useState("");
@@ -131,26 +131,29 @@ const ProblemSolved = () => {
           colorScheme="whatsapp"
           type="submit"
           onClick={fetchSolvedProblems}
-          fontSize={{ base: "sm", md: "md", lg: "lg" }}
+          fontSize={{ base: "xs", md: "md", lg: "lg" }}
+          px={{ base: 4, md: 6, lg: 8 }} // Adjust horizontal padding for different screen sizes
+          py={2} // Adjust vertical padding for different screen sizes
         >
           {loading ? (
-            <Spinner alignSelf="center" margin="auto" size="xl" w={20} h={20} />
+            <Spinner alignSelf="center" margin="auto" size="md" />
           ) : (
             <p>Show Results</p>
           )}
         </Button>
       </div>
       <div>
-        <h2
+        <Heading
           style={{
             display: "block",
             marginBottom: "8px",
             fontWeight: "bold",
             fontSize: "1.5vw",
+            marginTop: "1rem",
           }}
         >
           Solved Problems:{counter}{" "}
-        </h2>
+        </Heading>
         <table className={styles.table}>
           <thead>
             <tr>

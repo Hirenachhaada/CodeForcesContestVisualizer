@@ -3,7 +3,7 @@ import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
 import Loading from "./Loading";
-import { Spinner, Button } from "@chakra-ui/react";
+import { Spinner, Button, Heading } from "@chakra-ui/react";
 
 const DistinctProblems = () => {
   const [user, setUser] = useState("");
@@ -185,7 +185,9 @@ const DistinctProblems = () => {
           size="md"
           colorScheme="whatsapp"
           type="submit"
-          fontSize={{ base: "sm", md: "md", lg: "lg" }}
+          fontSize={{ base: "xs", md: "md", lg: "lg" }}
+          px={{ base: 4, md: 6, lg: 8 }} // Adjust horizontal padding for different screen sizes
+          py={2} // Adjust vertical padding for different screen sizes
           onClick={fetchDistinctProblems}
         >
           {loading ? (
@@ -196,16 +198,17 @@ const DistinctProblems = () => {
         </Button>
       </div>
       <div>
-        <h2
+        <Heading
           style={{
             display: "block",
             marginBottom: "8px",
             fontWeight: "bold",
             fontSize: "1.5vw",
+            marginTop: "1rem",
           }}
         >
           Distinct Problems:{counter}{" "}
-        </h2>
+        </Heading>
 
         <table className={styles.table}>
           <thead>

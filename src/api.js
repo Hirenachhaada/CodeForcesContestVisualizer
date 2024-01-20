@@ -29,6 +29,7 @@ export default function ApiCall() {
     backgroundColor: "#45a049",
   };
   async function calling() {
+    setLoading(true);
     counter = 0;
     if (user === "") {
       alert("Please Enter User Handel");
@@ -49,6 +50,7 @@ export default function ApiCall() {
       setContest([]);
       setUser("");
       setValid(false);
+      setLoading(false);
     } else {
       setContest(data.result.sort((a, b) => a.rank - b.rank));
       setFirstName(data1.result[0].firstName);
@@ -56,6 +58,7 @@ export default function ApiCall() {
       setMaxRating(data1.result[0].maxRating);
       console.log(valid);
       setValid(true);
+      setLoading(false);
     }
   }
 
@@ -96,10 +99,12 @@ export default function ApiCall() {
           colorScheme="whatsapp"
           type="submit"
           onClick={calling}
-          fontSize={{ base: "sm", md: "md", lg: "lg" }}
+          fontSize={{ base: "xs", md: "md", lg: "lg" }}
+          px={{ base: 4, md: 6, lg: 8 }} // Adjust horizontal padding for different screen sizes
+          py={2} // Adjust vertical padding for different screen sizes
         >
           {loading ? (
-            <Spinner alignSelf="center" margin="auto" size="xl" w={20} h={20} />
+            <Spinner alignSelf="center" margin="auto" size="md" />
           ) : (
             <p>Show Results</p>
           )}
