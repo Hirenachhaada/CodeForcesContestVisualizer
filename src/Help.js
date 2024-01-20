@@ -1,6 +1,6 @@
 // HelpPage.js
 import React from "react";
-
+import { Heading } from "@chakra-ui/react";
 const HelpPage = () => {
   const containerStyle = {
     maxWidth: "800px",
@@ -24,7 +24,9 @@ const HelpPage = () => {
 
   return (
     <div style={containerStyle}>
-      <h1 style={headingStyle}>Welcome to the ProCoder's Insight</h1>
+      <Heading as="h2" size="lg" style={headingStyle}>
+        Welcome to the ProCoder's Insight
+      </Heading>
       <p>
         This web application provides you with insightful features to analyze
         your CodeForces contest standings, view problems solved by you, and
@@ -32,10 +34,14 @@ const HelpPage = () => {
       </p>
 
       <div style={featureStyle}>
-        <h2 style={headingStyle}>Features</h2>
-
+        <Heading as="h4" size="lg" style={{ margin: "2rem 0px 0px 0px" }}>
+          Features
+        </Heading>
+        <br />
         <div>
-          <h3 style={headingStyle}>Contest Rank Hub:</h3>
+          <Heading as="h2" size="md" style={{ margin: "2px 0px 0px 0px" }}>
+            Contest Rank Hub:
+          </Heading>
           <ul>
             <li>
               View your CodeForces contest standings and analyze your
@@ -48,9 +54,9 @@ const HelpPage = () => {
         </div>
 
         <div>
-          <h3 style={headingStyle}>
+          <Heading as="h2" size="md" style={{ margin: "2rem 0px 0px 0px" }}>
             Friend's Forte: Uncharted Code Territories:
-          </h3>
+          </Heading>
           <ul>
             <li>
               Track problems solved by your friend on CodeForces and identify
@@ -60,11 +66,21 @@ const HelpPage = () => {
               Here you can see the problems solved by your friend that are yet
               to be solved by you.
             </li>
+            <li>
+              Here it has option of two handles for main user as many time you
+              have some problem solved on your diffrent account and you want to
+              solve the only the distinct one from your friend.
+            </li>
+            <li>
+              Though this is not a good practice to have more than one account
+            </li>
           </ul>
         </div>
 
         <div>
-          <h3 style={headingStyle}>CodeCrafted: Your Problem Victories</h3>
+          <Heading as="h2" size="md" style={{ margin: "2rem 0px 0px 0px" }}>
+            CodeCrafted: Your Problem Victories
+          </Heading>
           <ul>
             <li>
               Explore a list of problems solved by you in various CodeForces

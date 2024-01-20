@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, Button } from "@chakra-ui/react";
 
 export default function ApiCall() {
   console.log("call");
@@ -65,9 +65,11 @@ export default function ApiCall() {
         <label
           style={{
             display: "block",
-            marginBottom: "8px",
+            marginBottom: "1rem",
             fontWeight: "bold",
             fontSize: "1.5vw",
+            size: "sm",
+            marginTop: "1rem",
           }}
         >
           User Handle
@@ -89,22 +91,9 @@ export default function ApiCall() {
         </label>
       </div>
       <div style={{ display: "flex" }}>
-        <button
-          style={buttonStyle}
-          onMouseOver={() => {
-            // Apply hover styles on mouse over
-            setButtonStyle((prevStyle) => ({
-              ...prevStyle,
-              ...buttonHoverStyle,
-            }));
-          }}
-          onMouseOut={() => {
-            // Reset styles on mouse out
-            setButtonStyle((prevStyle) => ({
-              ...prevStyle,
-              backgroundColor: "#4CAF50",
-            }));
-          }}
+        <Button
+          size="md"
+          colorScheme="whatsapp"
           type="submit"
           onClick={calling}
         >
@@ -113,7 +102,7 @@ export default function ApiCall() {
           ) : (
             <p>Show Results</p>
           )}
-        </button>
+        </Button>
         {loading ? (
           <p
             style={{

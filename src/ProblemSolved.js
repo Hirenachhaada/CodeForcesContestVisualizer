@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, Button } from "@chakra-ui/react";
 
 const ProblemSolved = () => {
   const [user, setUser] = useState("");
@@ -101,7 +101,8 @@ const ProblemSolved = () => {
         <label
           style={{
             display: "block",
-            marginBottom: "8px",
+            marginBottom: "1rem",
+            marginTop: "1rem",
             fontWeight: "bold",
             fontSize: "1.5vw",
           }}
@@ -125,22 +126,9 @@ const ProblemSolved = () => {
         </label>
       </div>
       <div style={{ display: "flex" }}>
-        <button
-          style={buttonStyle}
-          onMouseOver={() => {
-            // Apply hover styles on mouse over
-            setButtonStyle((prevStyle) => ({
-              ...prevStyle,
-              ...buttonHoverStyle,
-            }));
-          }}
-          onMouseOut={() => {
-            // Reset styles on mouse out
-            setButtonStyle((prevStyle) => ({
-              ...prevStyle,
-              backgroundColor: "#4CAF50",
-            }));
-          }}
+        <Button
+          size="md"
+          colorScheme="whatsapp"
           type="submit"
           onClick={fetchSolvedProblems}
         >
@@ -149,7 +137,7 @@ const ProblemSolved = () => {
           ) : (
             <p>Show Results</p>
           )}
-        </button>
+        </Button>
       </div>
       <div>
         <h2
