@@ -141,7 +141,7 @@ const DistinctProblems = () => {
             onChange={(ev) => setUser(ev.target.value)}
             required
             style={{
-              padding: "8px",
+              padding: "0.5vw",
               width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
@@ -169,7 +169,7 @@ const DistinctProblems = () => {
             required
             name="user"
             style={{
-              padding: "8px",
+              padding: "0.5vw",
               width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
