@@ -66,14 +66,6 @@ const HelpPage = () => {
               Here you can see the problems solved by your friend that are yet
               to be solved by you.
             </li>
-            <li>
-              Here it has option of two handles for main user as many time you
-              have some problem solved on your diffrent account and you want to
-              solve the only the distinct one from your friend.
-            </li>
-            <li>
-              Though this is not a good practice to have more than one account
-            </li>
           </ul>
         </div>
 

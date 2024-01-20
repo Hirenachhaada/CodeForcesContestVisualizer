@@ -186,7 +186,7 @@ const DistinctProblems = () => {
           colorScheme="whatsapp"
           type="submit"
           fontSize={{ base: "xs", md: "md", lg: "lg" }}
-          px={{ base: 4, md: 6, lg: 8 }} // Adjust horizontal padding for different screen sizes
+          px={{ base: 2, md: 6, lg: 8 }} // Adjust horizontal padding for different screen sizes
           py={2} // Adjust vertical padding for different screen sizes
           onClick={fetchDistinctProblems}
         >
