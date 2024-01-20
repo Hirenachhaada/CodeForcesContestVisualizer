@@ -14,8 +14,8 @@ export default function ApiCall() {
   const [loading, setLoading] = useState(false);
   let counter = 0;
   const [buttonStyle, setButtonStyle] = useState({
-    padding: "10px 20px",
-    fontSize: "1.2vw",
+    padding: "1vw 1.5vw",
+    fontSize: "1vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -66,7 +66,7 @@ export default function ApiCall() {
             display: "block",
             marginBottom: "8px",
             fontWeight: "bold",
-            fontSize: "1.2rem",
+            fontSize: "2vw",
           }}
         >
           User Handle
@@ -76,12 +76,12 @@ export default function ApiCall() {
             onChange={(ev) => setUser(ev.target.value)}
             required
             style={{
-              padding: "8px",
+              padding: "0.5vw",
               width: "20%",
               boxSizing: "border-box",
               border: "1px solid #ddd",
               borderRadius: "4px",
-              fontSize: "16px",
+              fontSize: "1.2vw",
               marginLeft: "10px",
             }}
           />

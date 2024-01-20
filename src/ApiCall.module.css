@@ -65,13 +65,14 @@ td {
 
 .navbar li {
   margin: 0 10px;
+  font-size: 1.3vw;
 }
 
 .navbar a {
   display: block;
   color: white;
   text-decoration: none;
-  padding: 10px;
+  padding: 0.5vw;
   transition: background-color 0.3s;
 }
 

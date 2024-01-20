@@ -6,7 +6,6 @@ import Loading from "./Loading";
 
 const DistinctProblems = () => {
   const [user, setUser] = useState("");
-  const [altUser, setAltUser] = useState("");
   const [friend, setFriend] = useState("");
   const [distinctProblems, setDistinctProblems] = useState([]);
   const [sortOption, setSortOption] = useState(null);
@@ -25,9 +24,6 @@ const DistinctProblems = () => {
       alert("Please enter a valid Friend's User Handle");
       return;
     }
-    if (altUser.trim() === "") {
-      setAltUser(user);
-    }
     try {
       setLoading(true);
       const response = await fetch(
@@ -39,14 +35,6 @@ const DistinctProblems = () => {
       }
 
       const data = await response.json();
-      // Your data II
-      const response2 = await fetch(
-        `https://codeforces.com/api/user.status?handle=${altUser}`
-      );
-      if (!response2.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const data2 = await response2.json();
 
       // Friend data
       const response1 = await fetch(
@@ -56,25 +44,12 @@ const DistinctProblems = () => {
         throw new Error("Failed to fetch data");
       }
       const data1 = await response1.json();
-      if (
-        data.status === "OK" &&
-        data1.status === "OK" &&
-        data2.status === "OK"
-      ) {
-        const yourSolvedProblemsII = new Set(
-          data2.result
-            .filter((submission) => submission.verdict === "OK")
-            .map((submission) => submission.problem.name)
-        );
-
+      if (data.status === "OK" && data1.status === "OK") {
         const yourSolvedProblems = new Set(
           data.result
             .filter((submission) => submission.verdict === "OK")
             .map((submission) => submission.problem.name)
         );
-        for (let item of yourSolvedProblemsII) {
-          yourSolvedProblems.add(item);
-        }
         const friendSolvedProblems = new Set(
           data1.result
             .filter((submission) => submission.verdict === "OK")
@@ -132,8 +107,8 @@ const DistinctProblems = () => {
     setDistinctProblems(sortedProblems);
   };
   const [buttonStyle, setButtonStyle] = useState({
-    padding: "10px 20px",
-    fontSize: "1.2vw",
+    padding: "1vw 1.5vw",
+    fontSize: "1vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -161,34 +136,6 @@ const DistinctProblems = () => {
             type="text"
             name="user"
             onChange={(ev) => setUser(ev.target.value)}
-            required
-            style={{
-              padding: "8px",
-              width: "20%",
-              boxSizing: "border-box",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-              fontSize: "16px",
-              marginLeft: "10px",
-            }}
-          />
-        </label>
-      </div>
-
-      <div style={{ marginBottom: "20px" }}>
-        <label
-          style={{
-            display: "block",
-            marginBottom: "8px",
-            fontWeight: "bold",
-            fontSize: "20px",
-          }}
-        >
-          User Handle II (Alt Handle)😅😅
-          <input
-            type="text"
-            name="user"
-            onChange={(ev) => setAltUser(ev.target.value)}
             required
             style={{
               padding: "8px",

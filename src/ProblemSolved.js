@@ -12,8 +12,8 @@ const ProblemSolved = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [entriesPerPage, setEntriesPerPage] = useState(5);
   const [buttonStyle, setButtonStyle] = useState({
-    padding: "10px 20px",
-    fontSize: "1.2vw",
+    padding: "1vw 1.5vw",
+    fontSize: "1vw",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
