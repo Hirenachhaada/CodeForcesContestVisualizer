@@ -12,6 +12,16 @@
   margin-bottom: 20px;
 }
 
+/* ApiCall.module.css */
+
+.underline::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #09ecbb; /* Adjust the color as needed */
+}
+
 table {
   border-collapse: collapse;
   width: 75%;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
+import { Spinner } from "@chakra-ui/react";
 
 export default function ApiCall() {
   console.log("call");
@@ -107,7 +108,11 @@ export default function ApiCall() {
           type="submit"
           onClick={calling}
         >
-          Show Results
+          {loading ? (
+            <Spinner alignSelf="center" margin="auto" size="xl" w={20} h={20} />
+          ) : (
+            <p>Show Results</p>
+          )}
         </button>
         {loading ? (
           <p

@@ -45,13 +45,15 @@ import App from "./App";
 import Nav from "./Nav";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-
+import { ChakraProvider } from "@chakra-ui/react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <React.StrictMode>
-      <Nav />
-      <App />
+      <ChakraProvider>
+        <Nav />
+        <App />
+      </ChakraProvider>
     </React.StrictMode>
   </BrowserRouter>
 );

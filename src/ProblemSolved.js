@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
+import { Spinner } from "@chakra-ui/react";
 
 const ProblemSolved = () => {
   const [user, setUser] = useState("");
@@ -26,6 +27,7 @@ const ProblemSolved = () => {
     backgroundColor: "#45a049",
   };
   const fetchSolvedProblems = async () => {
+    setLoading(true);
     if (user.trim() === "") {
       alert("Please enter a valid User Handle");
       return;
@@ -53,10 +55,13 @@ const ProblemSolved = () => {
           }));
         setCounter(problems.length);
         setSolvedProblems(problems);
+        setLoading(false);
       } else {
+        setLoading(false);
         throw new Error("Failed to get user status");
       }
     } catch (error) {
+      setLoading(false);
       console.error("Error fetching data:", error.message);
     }
   };
@@ -139,21 +144,24 @@ const ProblemSolved = () => {
           type="submit"
           onClick={fetchSolvedProblems}
         >
-          Show Results
+          {loading ? (
+            <Spinner alignSelf="center" margin="auto" size="xl" w={20} h={20} />
+          ) : (
+            <p>Show Results</p>
+          )}
         </button>
-        {loading ? (
-          <p
-            style={{
-              marginLeft: "20px",
-              fontSize: "1.1vw",
-            }}
-          >
-            Loading ...
-          </p>
-        ) : null}
       </div>
       <div>
-        <h2 style={{ fontSize: "1.5vw" }}>Solved Problems:{counter} </h2>
+        <h2
+          style={{
+            display: "block",
+            marginBottom: "8px",
+            fontWeight: "bold",
+            fontSize: "1.5vw",
+          }}
+        >
+          Solved Problems:{counter}{" "}
+        </h2>
         <table className={styles.table}>
           <thead>
             <tr>

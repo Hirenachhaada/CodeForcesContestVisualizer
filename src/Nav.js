@@ -1,10 +1,11 @@
-// Inside your component file
 import React from "react";
 import logo from "./logoCF.png";
-import { Link } from "react-router-dom";
-import styles from "./ApiCall.module.css"; // Import your CSS file
+import { Link, useLocation } from "react-router-dom";
+import styles from "./ApiCall.module.css";
 
 const Nav = () => {
+  const location = useLocation();
+
   return (
     <div>
       <p className={styles.heading}>
@@ -13,18 +14,42 @@ const Nav = () => {
       </p>
       <nav>
         <ul className={styles.navbar} style={{ fontSize: "1.4vw" }}>
-          <li>
+          <li
+            className={
+              location.pathname === "/"
+                ? `${styles.active} ${styles.underline}`
+                : ""
+            }
+          >
             <Link to="/">Contest Ranks Hub</Link>
           </li>
-          <li>
+          <li
+            className={
+              location.pathname === "/distinctProblems"
+                ? `${styles.active} ${styles.underline}`
+                : ""
+            }
+          >
             <Link to="/distinctProblems">
               Friend's Forte: Uncharted Code Territories
             </Link>
           </li>
-          <li>
+          <li
+            className={
+              location.pathname === "/problemSolved"
+                ? `${styles.active} ${styles.underline}`
+                : ""
+            }
+          >
             <Link to="/problemSolved">CodeCrafted: Your Problem Victories</Link>
           </li>
-          <li>
+          <li
+            className={
+              location.pathname === "/help"
+                ? `${styles.active} ${styles.underline}`
+                : ""
+            }
+          >
             <Link to="/help">Help</Link>
           </li>
         </ul>

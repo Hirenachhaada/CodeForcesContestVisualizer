@@ -3,6 +3,7 @@ import logo from "./logoCF.png";
 import { Link } from "react-router-dom";
 import styles from "./ApiCall.module.css";
 import Loading from "./Loading";
+import { Spinner } from "@chakra-ui/react";
 
 const DistinctProblems = () => {
   const [user, setUser] = useState("");
@@ -109,6 +110,7 @@ const DistinctProblems = () => {
   const [buttonStyle, setButtonStyle] = useState({
     padding: "1vw 1.5vw",
     fontSize: "1.25vw",
+    widht: "10%",
     backgroundColor: "#4CAF50",
     color: "white",
     border: "none",
@@ -156,7 +158,7 @@ const DistinctProblems = () => {
             display: "block",
             marginBottom: "8px",
             fontWeight: "bold",
-            fontSize: "20px",
+            fontSize: "1.5vw",
           }}
         >
           Your Friend's UserId
@@ -171,7 +173,7 @@ const DistinctProblems = () => {
               boxSizing: "border-box",
               border: "1px solid #ddd",
               borderRadius: "4px",
-              fontSize: "16px",
+              fontSize: "1.5vw",
               marginLeft: "10px",
             }}
           />
@@ -197,21 +199,24 @@ const DistinctProblems = () => {
           type="submit"
           onClick={fetchDistinctProblems}
         >
-          Show Results
+          {loading ? (
+            <Spinner alignSelf="center" margin="auto" size="md" />
+          ) : (
+            <p>Show Results</p>
+          )}
         </button>
-        {loading ? (
-          <p
-            style={{
-              marginLeft: "20px",
-              fontSize: "1.1vw",
-            }}
-          >
-            Loading ...
-          </p>
-        ) : null}
       </div>
       <div>
-        <h2>Solved Problems:{counter} </h2>
+        <h2
+          style={{
+            display: "block",
+            marginBottom: "8px",
+            fontWeight: "bold",
+            fontSize: "1.5vw",
+          }}
+        >
+          Distinct Problems:{counter}{" "}
+        </h2>
 
         <table className={styles.table}>
           <thead>
