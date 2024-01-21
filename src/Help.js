@@ -66,6 +66,14 @@ const HelpPage = () => {
               Here you can see the problems solved by your friend that are yet
               to be solved by you.
             </li>
+            <li>
+              You can sort the problems based on rating, submission time and
+              more by clicking on heading of any of them.
+            </li>
+            <li>
+              Order of sorting them can be alter by clicking multiple time on
+              heading
+            </li>
           </ul>
         </div>
 
@@ -80,6 +88,14 @@ const HelpPage = () => {
             </li>
             <li>
               Flex in front of your friends by shoeing the list of problems
+            </li>
+            <li>
+              You can sort the problems based on rating, submission time and
+              more by clicking on heading of any of them.
+            </li>
+            <li>
+              Order of sorting them can be alter by clicking multiple time on
+              heading
             </li>
           </ul>
         </div>

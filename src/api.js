@@ -155,7 +155,7 @@ export default function ApiCall() {
                 <td>
                   <a
                     href={`https://codeforces.com/contest/${item.contestId}`}
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none", color: "blue" }}
                     target="_blank"
                   >
                     {item.contestName}
