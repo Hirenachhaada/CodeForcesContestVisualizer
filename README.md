@@ -1,4 +1,4 @@
-# CodeForces Contest Visualizer
+# Procoder Insight's
 
 Welcome to the CodeForces Contest Visualizer! This web application provides you with insightful features to analyze your CodeForces contest standings, view problems solved by you, and track problems solved by your friend that are yet to be solved by you.
 
