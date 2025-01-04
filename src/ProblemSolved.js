@@ -75,7 +75,11 @@ const ProblemSolved = () => {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
     } else {
       // Sort in ascending order by default
-      sortedProblems.sort((a, b) => a[option] - b[option]);
+      sortedProblems.sort((a, b) => {
+        const aValue = option === "rating" ? Number(a[option] || 0) : a[option];
+        const bValue = option === "rating" ? Number(b[option] || 0) : b[option];
+        return aValue - bValue;
+      });
       setSortOrder("asc");
     }
 
