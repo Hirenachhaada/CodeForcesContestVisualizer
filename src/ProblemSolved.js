@@ -175,7 +175,6 @@ const ProblemSolved = () => {
                 <td>
                   {new Date(problem.submissionTime * 1000).toLocaleString()}
                 </td>
-
                 <td>
                   <a
                     href={`https://codeforces.com/contest/${problem.contestId}/problem/${problem.index}`}

@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logoCF.png";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import styles from "./ApiCall.module.css";
-import Loading from "./Loading";
 import { Spinner, Button, Heading } from "@chakra-ui/react";
 
 const DistinctProblems = () => {
@@ -100,7 +97,11 @@ const DistinctProblems = () => {
       setSortOrder(sortOrder === "asc" ? "desc" : "asc");
     } else {
       // Sort in ascending order by default
-      sortedProblems.sort((a, b) => a[option] - b[option]);
+      sortedProblems.sort((a, b) => {
+        const aValue = option === "rating" ? Number(a[option] || 0) : a[option];
+        const bValue = option === "rating" ? Number(b[option] || 0) : b[option];
+        return aValue - bValue;
+      });
       setSortOrder("asc");
     }
 
